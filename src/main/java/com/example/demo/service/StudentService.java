@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,17 @@ public class StudentService {
 		
 		stuRepo.save(stu);
 		
+	}
+
+
+	public List<Student> getAllStus() {
+		return stuRepo.findAll();
+	}
+
+
+	public Student getStudent(int id) {
+		// TODO Auto-generated method stub
+		return stuRepo.findById(id).get();
 	}
 
 }

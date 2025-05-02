@@ -1,10 +1,13 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.Student;
@@ -21,11 +24,9 @@ public class ExamController {
 	
 	
 	@GetMapping("/jntu/drk/exam")
-	public Student getStuMarks() {
+	public Student getStuMarks(@RequestParam int id) {
 		
-		Student stu = new Student(12345,"Ramya","DRK","CSE",87);
-		
-		return stu;
+		return stuService.getStudent(id);
 	}
 	
 	
@@ -38,6 +39,14 @@ public class ExamController {
 		
 		return "successfully added into db";
 	}
+
+	@GetMapping("/jntu/exam/stu/all")
+	public List<Student> getAllStudents(){
+		
+		return stuService.getAllStus();
+	}
+	
+	
 	
 	
 	
